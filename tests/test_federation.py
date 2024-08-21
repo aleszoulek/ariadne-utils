@@ -1,13 +1,12 @@
-from io import StringIO
 from collections import namedtuple
+from io import StringIO
 from unittest.mock import MagicMock, patch
 
-import pytest
 import graphql
+import pytest
 from ariadne import QueryType  # , ObjectType
 
 from ariadne_extensions.federation import FederatedManager, FederatedObjectType
-
 
 SDL = """
 type User @key(fields: "id") @extends {
@@ -44,6 +43,7 @@ def federated_schema_(federated_manager):
 
 def test_manager_adds_federation_specs(federated_schema):
 
+    print(graphql.print_schema(federated_schema))
     assert (
         graphql.print_schema(federated_schema)
         == """directive @external on FIELD_DEFINITION
@@ -56,15 +56,19 @@ directive @key(fields: _FieldSet!) on OBJECT | INTERFACE
 
 directive @extends on OBJECT
 
-type Photo {
-  id: ID!
-  url: String!
-  description: String
-}
+scalar _Any
+
+scalar _FieldSet
+
+union _Entity = User
 
 type Query {
   _entities(representations: [_Any!]!): [_Entity]!
   _service: _Service!
+}
+
+type _Service {
+  sdl: String
 }
 
 type User {
@@ -72,16 +76,11 @@ type User {
   photos: [Photo]!
 }
 
-scalar _Any
-
-union _Entity = User
-
-scalar _FieldSet
-
-type _Service {
-  sdl: String
-}
-"""
+type Photo {
+  id: ID!
+  url: String!
+  description: String
+}"""
     )
 
 

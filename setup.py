@@ -25,12 +25,11 @@ CLASSIFIERS = [
     "License :: OSI Approved :: BSD License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.11",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
-INSTALL_DEPENDECIES = ["ariadne==0.11.0"]
+INSTALL_DEPENDECIES = ["ariadne==0.18.0"]
 
 setup(
     name="ariadne-extensions",
