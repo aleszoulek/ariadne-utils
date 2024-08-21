@@ -29,7 +29,7 @@ CLASSIFIERS = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
-INSTALL_DEPENDECIES = ["ariadne==0.13.0"]
+INSTALL_DEPENDECIES = ["ariadne==0.18.0"]
 
 setup(
     name="ariadne-extensions",

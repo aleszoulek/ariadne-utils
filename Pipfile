@@ -12,7 +12,7 @@ black = "==19.3b0"
 coveralls = "*"
 
 [packages]
-ariadne = "0.13.0"
+ariadne = "0.18.0"
 
 [requires]
 python_version = "3.11"
